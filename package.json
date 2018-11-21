@@ -1,0 +1,58 @@
+{
+  "name": "insta-bot",
+  "version": "1.0.0",
+  "description": "Instagram services",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev-server\" \"npm run start-client\"",
+    "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
+    "start-client": "cd client && npm start",
+    "dev-server": "nodemon -w server/ --exec \"babel-node server/ --presets @babel/env --plugins @babel/plugin-transform-destructuring\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carlos Diez",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.13",
+    "morgan": "^1.9.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env",
+      "@babel/react"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ],
+    "env": {
+      "production": {
+        "plugins": [
+          "dev-expression"
+        ]
+      },
+      "development": {
+        "plugins": [
+          "@babel/plugin-proposal-class-properties",
+          "@babel/plugin-transform-classes"
+        ]
+      }
+    }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.6"
+  }
+}
