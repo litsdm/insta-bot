@@ -221,6 +221,12 @@ module.exports = {
       .map(ext => `.${ext}`)
       .filter(ext => useTypeScript || !ext.includes('ts')),
     alias: {
+      '@actions': path.resolve(__dirname, '../src/actions'),
+      '@components': path.resolve(__dirname, '../src/components'),
+      '@containers': path.resolve(__dirname, '../src/containers'),
+      '@globalStyles': path.resolve(__dirname, '../src/styles/globals.scss'),
+      '@helpers': path.resolve(__dirname, '../src/helpers'),
+      '@shapes': path.resolve(__dirname, '../src/shapes'),
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -260,7 +266,7 @@ module.exports = {
             options: {
               formatter: require.resolve('react-dev-utils/eslintFormatter'),
               eslintPath: require.resolve('eslint'),
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -293,7 +299,7 @@ module.exports = {
               customize: require.resolve(
                 'babel-preset-react-app/webpack-overrides'
               ),
-              
+
               plugins: [
                 [
                   require.resolve('babel-plugin-named-asset-import'),
@@ -331,7 +337,7 @@ module.exports = {
               cacheDirectory: true,
               // Save disk space when time isn't as important
               cacheCompression: true,
-              
+
               // If an error happens in a package, it's possible to be
               // because it was compiled. Thus, we don't want the browser
               // debugger to show the original code. Instead, the code
@@ -374,34 +380,24 @@ module.exports = {
           // By default we support SASS Modules with the
           // extensions .module.scss or .module.sass
           {
-            test: sassRegex,
-            exclude: sassModuleRegex,
-            loader: getStyleLoaders(
+            test: /^((?!\.global).)*\.(scss|sass)$/,
+            use: [
               {
-                importLoaders: 2,
-                sourceMap: shouldUseSourceMap,
+                loader: 'style-loader'
               },
-              'sass-loader'
-            ),
-            // Don't consider CSS imports dead code even if the
-            // containing package claims to have no side effects.
-            // Remove this when webpack adds a warning or an error for this.
-            // See https://github.com/webpack/webpack/issues/6571
-            sideEffects: true,
-          },
-          // Adds support for CSS Modules, but using SASS
-          // using the extension .module.scss or .module.sass
-          {
-            test: sassModuleRegex,
-            loader: getStyleLoaders(
               {
-                importLoaders: 2,
-                sourceMap: shouldUseSourceMap,
-                modules: true,
-                getLocalIdent: getCSSModuleLocalIdent,
+                loader: 'css-loader',
+                options: {
+                  modules: true,
+                  sourceMap: true,
+                  importLoaders: 1,
+                  localIdentName: '[name]__[local]__[hash:base64:5]'
+                }
               },
-              'sass-loader'
-            ),
+              {
+                loader: 'sass-loader'
+              }
+            ]
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
