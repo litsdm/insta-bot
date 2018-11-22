@@ -1,0 +1,92 @@
+@import '~@globalStyles';
+
+.sideBar {
+  align-items: center;
+  background-color: #fff;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  width: $u * 9;
+  overflow-y: auto;
+  z-index: 2;
+}
+
+.link {
+  align-items: center;
+  background-color: $light-grey;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  margin-top: $u * 4;
+  position: relative;
+
+  img {
+    border-radius: 50%;
+    height: $u * 7;
+    object-fit: cover;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    width: $u * 7;
+  }
+
+  .bar {
+    opacity: 0;
+    left: -11px;
+  }
+
+  &:hover {
+    color: #fff;
+
+    img {
+      border-radius: 15%;
+    }
+  }
+
+  &.active {
+    background-color: $as-blue;
+    color: #fff;
+
+    .bar {
+      left: -7px;
+      opacity: 1;
+    }
+
+    img {
+      border-radius: 15%;
+    }
+  }
+}
+
+.bar {
+  background-color: $as-blue;
+  border-bottom-right-radius: 100%;
+  border-top-right-radius: 100%;
+  height: $u * 7;
+  position: absolute;
+  top: 0;
+  transition: 0.2s left ease;
+  width: 3px;
+}
+
+.add {
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  height: $u * 7;
+  margin-top: $u * 4;
+  min-height: $u * 7;
+  outline: none;
+  transition: border-color .25s ease,color .25s ease;
+  width: $u * 7;
+
+  svg {
+    font-size: 1.15rem;
+  }
+
+  &:hover {
+    border-color: $as-blue;
+    color: $as-blue;
+  }
+}
