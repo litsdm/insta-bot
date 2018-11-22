@@ -1,0 +1,18 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 14px;
+}
+
+.input {
+  background-color: rgba(96,125,139, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-top: 6px;
+  outline: none;
+  padding: 6px 8px;
+}
