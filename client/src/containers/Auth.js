@@ -34,6 +34,13 @@ class AuthPage extends Component {
     }
   }
 
+  componentDidMount() {
+    const { history } = this.props;
+    if (localStorage.getItem('instaToken')) {
+      history.push('/dashboard');
+    }
+  }
+
   handleChange = ({ target: { name, value } }) => this.setState({ [name]: value })
 
   receiveState = (newState) => this.setState(newState);
@@ -108,7 +115,7 @@ class AuthPage extends Component {
         if (message) return Promise.reject(message);
 
         addUserFromToken(token);
-        localStorage.setItem('instaToken')
+        localStorage.setItem('instaToken', token);
 
         history.push('/dashboard');
         return Promise.resolve();
