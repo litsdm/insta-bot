@@ -1,0 +1,20 @@
+@import '~@globalStyles';
+
+.topBar {
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid $border-gray;
+  display: flex;
+  height: $u * 9;
+  left: 0;
+  padding: 0 $u * 4;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 3;
+}
+
+.brandName {
+  font-weight: 600;
+  font-size: $u * 4;
+}
