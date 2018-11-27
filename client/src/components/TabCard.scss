@@ -1,0 +1,65 @@
+@import '~@globalStyles';
+
+.tabCard {
+  background-color: #fff;
+  border: 1px solid $border-gray;
+  border-radius: $u;
+}
+
+.title {
+  padding: $u * 4;
+  font-size: $u * 3;
+  font-weight: 600;
+}
+
+.tabs {
+  align-items: center;
+  display: flex;
+}
+
+.tab {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 $u * 4;
+
+  button {
+    border: none;
+    cursor: pointer;
+    font-size: $u * 3;
+    font-weight: 300;
+    opacity: 0.7;
+    outline: none;
+    padding: $u * 2 0;
+    padding-top: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .indicator {
+    background-color: $blue;
+    height: 1px;
+    margin-bottom: -1px;
+    transition: 0.3s ease all;
+    width: 0;
+  }
+
+  &.active {
+    .indicator {
+      width: 100%;
+    }
+  }
+}
+
+.divider {
+  background-color: $border-gray;
+  height: 1px;
+  width: 100%;
+}
+
+.content {
+  padding: $u * 4;
+}
