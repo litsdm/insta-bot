@@ -1,0 +1,53 @@
+@import '~@globalStyles';
+
+.profileCard {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid $border-gray;
+  border-radius: $u;
+  display: flex;
+  justify-content: space-between;
+  padding: $u * 4;
+}
+
+.left {
+  align-items: center;
+  display: flex;
+}
+
+.profilePic {
+  border-radius: 50%;
+  height: $u * 15;
+  object-fit: cover;
+  width: $u * 15;
+}
+
+.accountInfo {
+  margin-left: $u * 2;
+}
+
+.name {
+  font-weight: 600;
+  margin-bottom: $u;
+}
+
+.handle {
+  font-weight: 300;
+}
+
+.right {
+  align-items: center;
+  display: flex;
+}
+
+.infoItem {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: $u * 8;
+}
+
+.infoTitle {
+  font-weight: 600;
+  margin-bottom: $u;
+}
