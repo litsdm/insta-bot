@@ -12,7 +12,7 @@ router.post('/login', ({ body: { email, password } }, res) => {
       if (!isMatch) return res.status(401).send({ message: 'Password is incorrect.' });
       const { _id, username, email: usrEmail } = user;
       const token = jwt.sign({ id: _id, username, email: usrEmail }, process.env.JWT_SECRET);
-      res.send({ token });
+      res.status(200).send({ token });
     })
   });
 });
@@ -27,7 +27,7 @@ router.post('/sign-up', ({ body }, res) => {
       if (err2) { return res.status(400).send({ message: err }) }
       const { _id, username, email } = newUser;
       const token = jwt.sign({ id: _id, username, email }, process.env.JWT_SECRET);
-      res.send({ token });
+      res.status(200).send({ token });
     });
   });
 });

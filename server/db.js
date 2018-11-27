@@ -2,10 +2,10 @@ import mongoose from 'mongoose';
 
 require('dotenv').config()
 
-const dbName = 'ds155313.mlab.com:55313/mxnstyle'
+const dbName = 'ds057934.mlab.com:57934/insta-bot'
 
 const MONGO_URL = process.env.OFFLINE
-  ? 'mongodb://localhost:27017/mxnstyle'
+  ? 'mongodb://localhost:27017/insta-bot'
   : `mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${dbName}`;
 
 export default callback => {

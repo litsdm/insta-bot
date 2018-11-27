@@ -7,18 +7,15 @@ const { ObjectId } = Schema.Types;
 const UserSchema = new Schema({
   createdAt: { type: Date },
   updatedAt: { type: Date },
-  lastConnection: { type: Date },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
-  username: { type: String, required: true },
-  files: [{ type: ObjectId, ref: 'File' }],
-  expoToken: { type: String }
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true }
 });
 
 UserSchema.pre('save', function preUser(next) {
   const now = new Date();
   this.updatedAt = now;
-  if (!this.lastConnection) this.lastConnection = now;
   if (!this.createdAt) this.createdAt = now;
 
   // ENCRYPT PASSWORD

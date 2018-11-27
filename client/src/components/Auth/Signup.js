@@ -1,27 +1,52 @@
 import React from 'react';
 import { func, string } from 'prop-types';
+import shapes from '@shapes';
 import styles from './styles.scss';
 
-const Signup = ({ firstName, lastName, email, password, handleChange }) => (
+import InputLabel from './InputLabel';
+
+const { authErrorsShape } = shapes;
+
+const Signup = ({ firstName, lastName, email, password, handleChange, errors }) => (
   <div className={styles.signup}>
     <div className={styles.personalInfo}>
-      <label htmlFor="firstNameInput" className={styles.label}>
-        First Name
-        <input id="firstNameInput" type="firstName" name="firstName" value={firstName} onChange={handleChange} />
-      </label>
-      <label htmlFor="lastNameInput" className={styles.label}>
-        Last Name
-        <input id="lastNameInput" type="firstName" name="lastName" value={lastName} onChange={handleChange} />
-      </label>
+      <InputLabel
+        id="firstNameInput"
+        type="firstName"
+        name="firstName"
+        value={firstName}
+        onChange={handleChange}
+        labelText="First Name"
+        error={errors.firstName}
+      />
+      <InputLabel
+        id="lastNameInput"
+        type="firstName"
+        name="lastName"
+        value={lastName}
+        onChange={handleChange}
+        labelText="Last Name"
+        error={errors.lastName}
+      />
     </div>
-    <label htmlFor="emailInput" className={styles.label}>
-      Email
-      <input id="emailInput" type="email" name="email" value={email} onChange={handleChange} />
-    </label>
-    <label htmlFor="passwordInput" className={styles.label}>
-      Password
-      <input id="passwordInput" type="password" name="password" value={password} onChange={handleChange} />
-    </label>
+    <InputLabel
+      id="emailInput"
+      type="email"
+      name="email"
+      value={email}
+      onChange={handleChange}
+      labelText="Email"
+      error={errors.email}
+    />
+    <InputLabel
+      id="passwordInput"
+      type="password"
+      name="password"
+      value={password}
+      onChange={handleChange}
+      labelText="Password"
+      error={errors.password}
+    />
   </div>
 );
 
@@ -30,7 +55,8 @@ Signup.propTypes = {
   lastName: string.isRequired,
   email: string.isRequired,
   password: string.isRequired,
-  handleChange: func.isRequired
+  handleChange: func.isRequired,
+  errors: authErrorsShape.isRequired
 };
 
 export default Signup;

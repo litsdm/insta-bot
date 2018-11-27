@@ -11,6 +11,7 @@
 .wrapper {
   align-items: flex-start;
   background-color: #FEFEFE;
+  border: 1px solid $border-gray;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -111,5 +112,17 @@
 
   .label {
     width: 155px;
+  }
+}
+
+.labelWrapper {
+  align-items: center;
+  display: flex;
+
+  p {
+    color: $red;
+    font-size: $u * 2;
+    font-weight: 300;
+    margin-left: $u;
   }
 }

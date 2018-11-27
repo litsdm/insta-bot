@@ -1,11 +1,14 @@
 import React from 'react';
 import { bool, func, string } from 'prop-types';
+import shapes from '@shapes';
 import styles from './styles.scss';
 
 import Login from './Login';
 import Signup from './Signup';
 
-const Auth = ({ email, password, handleChange, firstName, lastName, isNew, setState }) => (
+const { authErrorsShape } = shapes;
+
+const Auth = ({ email, password, handleChange, firstName, lastName, isNew, setState, authorize, errors }) => (
   <div className={styles.container}>
     <div className={styles.wrapper}>
       <p className={styles.brandName}>
@@ -23,15 +26,16 @@ const Auth = ({ email, password, handleChange, firstName, lastName, isNew, setSt
               firstName={firstName}
               lastName={lastName}
               handleChange={handleChange}
+              errors={errors}
             />
           )
-          : <Login email={email} password={password} handleChange={handleChange} />
+          : <Login email={email} password={password} handleChange={handleChange} errors={errors} />
       }
       <div className={styles.buttons}>
-        <button type="button" className={styles.primary}>
+        <button type="button" className={styles.primary} onClick={authorize}>
           { isNew ? 'Signup' : 'Login' }
         </button>
-        <button type="button" className={styles.secondary} onClick={() => setState({ isNew: !isNew })}>
+        <button type="button" className={styles.secondary} onClick={() => setState({ isNew: !isNew, errors: {} })}>
           { !isNew ? 'Signup' : 'Login' }
         </button>
       </div>
@@ -46,7 +50,9 @@ Auth.propTypes = {
   lastName: string.isRequired,
   isNew: bool.isRequired,
   handleChange: func.isRequired,
-  setState: func.isRequired
+  setState: func.isRequired,
+  authorize: func.isRequired,
+  errors: authErrorsShape.isRequired
 }
 
 export default Auth;
