@@ -9,7 +9,7 @@
   flex-direction: column;
   height: auto;
   padding-top: $u * 9;
-  position: absolute;
+  position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
   width: $u * 9;
   overflow-y: auto;
