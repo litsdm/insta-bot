@@ -3,7 +3,7 @@ import { func, string } from 'prop-types';
 import shapes from '@shapes';
 import styles from './styles.scss';
 
-import InputLabel from './InputLabel';
+import InputLabel from '../InputLabel';
 
 const { authErrorsShape } = shapes;
 

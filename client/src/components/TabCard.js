@@ -34,7 +34,6 @@ class TabCard extends Component {
         <div className={styles.tabs}>
           {this.renderTabs()}
         </div>
-        <div className={styles.divider} />
         <div className={styles.content}>
           {tab}
         </div>

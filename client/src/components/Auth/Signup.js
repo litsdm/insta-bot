@@ -3,7 +3,7 @@ import { func, string } from 'prop-types';
 import shapes from '@shapes';
 import styles from './styles.scss';
 
-import InputLabel from './InputLabel';
+import InputLabel from '../InputLabel';
 
 const { authErrorsShape } = shapes;
 
@@ -18,6 +18,7 @@ const Signup = ({ firstName, lastName, email, password, handleChange, errors }) 
         onChange={handleChange}
         labelText="First Name"
         error={errors.firstName}
+        labelStyle={{ width: '155px' }}
       />
       <InputLabel
         id="lastNameInput"
@@ -27,6 +28,7 @@ const Signup = ({ firstName, lastName, email, password, handleChange, errors }) 
         onChange={handleChange}
         labelText="Last Name"
         error={errors.lastName}
+        labelStyle={{ width: '155px' }}
       />
     </div>
     <InputLabel
@@ -37,6 +39,7 @@ const Signup = ({ firstName, lastName, email, password, handleChange, errors }) 
       onChange={handleChange}
       labelText="Email"
       error={errors.email}
+      labelStyle={{ width: '360px' }}
     />
     <InputLabel
       id="passwordInput"
@@ -46,6 +49,7 @@ const Signup = ({ firstName, lastName, email, password, handleChange, errors }) 
       onChange={handleChange}
       labelText="Password"
       error={errors.password}
+      labelStyle={{ width: '360px' }}
     />
   </div>
 );

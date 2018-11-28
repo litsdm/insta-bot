@@ -38,33 +38,6 @@
   flex-direction: column;
 }
 
-.label {
-  display: flex;
-  background-color: #fff;
-  border: 1px solid #EAEDF3;
-  border-radius: 2px;
-  color: rgba(0, 0, 0, 0.5);
-  cursor: text;
-  flex-direction: column;
-  font-size: 14px;
-  padding: 12px 24px;
-  padding-bottom: 6px;
-  width: 300px;
-
-  input {
-    background-color: transparent;
-    border: none;
-    font-size: 14px;
-    outline: none;
-    padding: 6px 0px;
-    width: 100%;
-  }
-
-  &:focus-within {
-    border-left: 1px solid $blue;
-  }
-}
-
 .buttons {
   align-items: center;
   display: flex;
@@ -103,26 +76,6 @@
   }
 }
 
-.signup .label {
-  width: 360px;
-}
-
 .personalInfo {
   display: flex;
-
-  .label {
-    width: 155px;
-  }
-}
-
-.labelWrapper {
-  align-items: center;
-  display: flex;
-
-  p {
-    color: $red;
-    font-size: $u * 2;
-    font-weight: 300;
-    margin-left: $u;
-  }
 }
