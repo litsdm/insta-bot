@@ -1,0 +1,31 @@
+@import '~@globalStyles';
+
+.accModal {
+  padding: $u * 4;
+}
+
+.footer {
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  padding: $u * 2 $u * 4;
+}
+
+.primary {
+  background-color: $blue;
+  border: none;
+  border-bottom-left-radius: $u;
+  border-bottom-right-radius: $u;
+  border-radius: $u;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none;
+  padding: $u * 2 $u * 4;
+  transition: 0.3s ease all;
+
+  &:hover {
+    background-color: $as-blue;
+  }
+}

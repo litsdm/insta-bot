@@ -6,6 +6,12 @@ import styles from './SideBar.scss';
 const { accountShape } = shapes;
 
 const SideBar = ({ accounts, accountIndex, setState }) => {
+  const openModal = () => {
+      const element = document.getElementById('add-modal');
+      if (!element) return;
+      element.style.display = 'flex';
+  }
+
   const renderNavLinks = () => accounts.map(({ profilePic }, index) => (
     <button
       type="button"
@@ -20,7 +26,7 @@ const SideBar = ({ accounts, accountIndex, setState }) => {
   return (
     <div className={styles.sideBar}>
       {renderNavLinks()}
-      <button type="button" className={styles.add}>
+      <button type="button" className={styles.add} onClick={openModal}>
         <i className="fa fa-plus" />
       </button>
     </div>

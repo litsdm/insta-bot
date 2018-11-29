@@ -1,0 +1,61 @@
+@import '~@globalStyles';
+
+.container {
+  align-items: center;
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 5;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 6px;
+  min-width: $u * 80;
+  z-index: 1;
+}
+
+.content {
+  background-color: #FCFCFD;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: $u * 2 $u * 4;
+}
+
+.title {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.close {
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.6;
+  outline: none;
+  padding: 6px 10px;
+  transition: 0.3s ease all;
+
+  &:hover {
+    opacity: 1;
+    background-color: $border-gray;
+  }
+}

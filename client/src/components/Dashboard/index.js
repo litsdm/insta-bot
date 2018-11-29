@@ -1,5 +1,5 @@
 import React from 'react';
-import { arrayOf, func, number } from 'prop-types';
+import { arrayOf, func, number, string } from 'prop-types';
 import shapes from '@shapes';
 import styles from './styles.scss';
 
@@ -8,6 +8,7 @@ import SideBar from './SideBar';
 import TopBar from './TopBar';
 import ProfileCard from './ProfileCard';
 import TabCard from '../TabCard';
+import AddAccountModal from './AddAccountModal';
 
 import AccountTab from './SettingsCard/AccountTab';
 import MainTab from './SettingsCard/MainTab';
@@ -19,7 +20,7 @@ import LimitsTab from './ConfigurationCard/LimitsTab';
 
 const { accountShape } = shapes;
 
-const Dashboard = ({ accounts, accountIndex, setState }) => {
+const Dashboard = ({ accounts, accountIndex, setState, accountUser, accountPassword, addAccount }) => {
   const settingTabs = [
     {
       title: 'Main',
@@ -69,6 +70,13 @@ const Dashboard = ({ accounts, accountIndex, setState }) => {
             </div>
           )
       }
+      <AddAccountModal
+        id="add-modal"
+        accountUser={accountUser}
+        accountPassword={accountPassword}
+        setState={setState}
+        addAccount={addAccount}
+      />
     </div>
   )
 }
@@ -76,7 +84,10 @@ const Dashboard = ({ accounts, accountIndex, setState }) => {
 Dashboard.propTypes = {
   accounts: arrayOf(accountShape).isRequired,
   accountIndex: number.isRequired,
-  setState: func.isRequired
+  setState: func.isRequired,
+  accountUser: string.isRequired,
+  accountPassword: string.isRequired,
+  addAccount: func.isRequired
 }
 
 export default Dashboard;
