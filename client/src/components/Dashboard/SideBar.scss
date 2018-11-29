@@ -18,10 +18,13 @@
 
 .link {
   align-items: center;
-  background-color: $light-grey;
+  background-color: transparent;
+  border: none;
   color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
   display: flex;
   margin-top: $u * 4;
+  outline: none;
   position: relative;
 
   img {
@@ -34,7 +37,7 @@
 
   .bar {
     opacity: 0;
-    left: -11px;
+    left: -2px;
   }
 
   &:hover {
@@ -46,11 +49,10 @@
   }
 
   &.active {
-    background-color: $as-blue;
     color: #fff;
 
     .bar {
-      left: -7px;
+      left: 0px;
       opacity: 1;
     }
 

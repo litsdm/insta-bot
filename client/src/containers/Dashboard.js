@@ -22,14 +22,23 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class DashboardPage extends Component {
+  state = {
+    accountIndex: 0
+  };
+
   componentDidMount() {
     const { fetchAccounts } = this.props;
     fetchAccounts();
   }
 
+  receiveState = (newState) => this.setState(newState);
+
   render() {
+    const { accountIndex } = this.state;
     const { isFetching, accounts } = this.props;
-    return isFetching ? <Loader /> : <Dashboard accounts={accounts} />;
+    return isFetching
+      ? <Loader />
+      : <Dashboard setState={this.receiveState} accounts={accounts} accountIndex={accountIndex} />;
   }
 }
 

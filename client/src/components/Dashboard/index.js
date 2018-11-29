@@ -1,6 +1,9 @@
 import React from 'react';
+import { arrayOf, func, number } from 'prop-types';
+import shapes from '@shapes';
 import styles from './styles.scss';
 
+import Empty from './Empty';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
 import ProfileCard from './ProfileCard';
@@ -14,7 +17,9 @@ import CommentsTab from './ConfigurationCard/CommentsTab';
 import FollowersTab from './ConfigurationCard/FollowersTab';
 import LimitsTab from './ConfigurationCard/LimitsTab';
 
-const Dashboard = () => {
+const { accountShape } = shapes;
+
+const Dashboard = ({ accounts, accountIndex, setState }) => {
   const settingTabs = [
     {
       title: 'Main',
@@ -52,14 +57,26 @@ const Dashboard = () => {
   return (
     <div className={styles.container}>
       <TopBar />
-      <SideBar />
-      <div className={styles.content}>
-        <ProfileCard />
-        <TabCard cardTitle="Settings" tabs={settingTabs} />
-        <TabCard cardTitle="Configuration" tabs={configurationTabs} />
-      </div>
+      <SideBar accounts={accounts} accountIndex={accountIndex} setState={setState} />
+      {
+        accounts.length < 1
+          ? <Empty />
+          : (
+            <div className={styles.content}>
+              <ProfileCard />
+              <TabCard cardTitle="Settings" tabs={settingTabs} />
+              <TabCard cardTitle="Configuration" tabs={configurationTabs} />
+            </div>
+          )
+      }
     </div>
-  );
+  )
+}
+
+Dashboard.propTypes = {
+  accounts: arrayOf(accountShape).isRequired,
+  accountIndex: number.isRequired,
+  setState: func.isRequired
 }
 
 export default Dashboard;
