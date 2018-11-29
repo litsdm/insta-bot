@@ -10,7 +10,7 @@ const AccountTab = () => (
       id="instaEmailInput"
       name="instaEmail"
       value="instaEmail"
-      labelText="Email"
+      labelText="✉️Email"
       onChange={() => {}}
     />
     <Input
@@ -18,7 +18,7 @@ const AccountTab = () => (
       name="instaEmail"
       type="password"
       value="instaPassowrd"
-      labelText="Password"
+      labelText="🔑Password"
       onChange={() => {}}
     />
   </div>

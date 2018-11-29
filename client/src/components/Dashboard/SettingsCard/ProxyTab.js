@@ -11,14 +11,14 @@ const ProxyTab = () => (
         id="proxyHostInput"
         name="host"
         value="host"
-        labelText="Host"
+        labelText="☁️Host"
         onChange={() => {}}
       />
       <Input
         id="proxyPortInput"
         name="port"
         value="port"
-        labelText="Port"
+        labelText="⚙️Port"
         onChange={() => {}}
       />
     </div>
@@ -27,7 +27,7 @@ const ProxyTab = () => (
         id="proxyUserInput"
         name="user"
         value="user"
-        labelText="User"
+        labelText="👱🏼‍♀️User"
         onChange={() => {}}
       />
       <Input
@@ -35,7 +35,7 @@ const ProxyTab = () => (
         name="password"
         value="password"
         type="password"
-        labelText="Password"
+        labelText="🔑Password"
         onChange={() => {}}
       />
     </div>
