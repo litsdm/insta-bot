@@ -9,13 +9,7 @@ const InstaAccountSchema = new Schema({
   updatedAt: { type: Date },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
-  profilePic: { type: String, required: true },
   user: { type: ObjectId, ref: 'User', required: true },
-  followerCount: Number,
-  followingCount: Number,
-  handle: String,
-  mediaCount: Number,
-  fullName: String,
   proxy: {
     host: String,
     port: String,

@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import { V1 as Client } from 'instagram-private-api';
+import path from 'path';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 
@@ -11,7 +13,7 @@ const router = Router();
 
 router.put('/:userId/update', ({ body: { name, value }, params: { userId } }, res) => {
   User.findOneAndUpdate({ _id: userId }, { $set: { [name]: value } }, (err, user) => {
-    if (err) res.send({ err: 'Something went wrong while updating your user.' });
+    if (err) return res.send({ err: 'Something went wrong while updating your user.' });
     const { _id, username, email } = user;
     const tokenObj = { id: _id, username, email };
     if (name === 'username' || name === 'email' || name === '_id') {
@@ -24,10 +26,43 @@ router.put('/:userId/update', ({ body: { name, value }, params: { userId } }, re
 });
 
 router.get('/:userId/accounts', ({ params: { userId } }, res) => {
-  InstaAccount.find({ user: ObjectId(userId) }, (err, accounts) => {
-    if (err) res.status(401).send({ err: err.message });
+  getAccountsWithInstagramInfo(userId, res, (accounts) => {
     res.status(200).send({ accounts });
-  })
+  });
 });
+
+const getAccountsWithInstagramInfo = (userId, res, cb) => {
+  InstaAccount.find({ user: ObjectId(userId) }, async (err, accounts) => {
+    if (err) return res.status(401).send({ err: err.message });
+
+    const promises = accounts.map(async (instaAccount) => {
+      const device = new Client.Device(instaAccount.email);
+      const storage = new Client.CookieFileStorage(path.join(__dirname, `./cookies/${instaAccount.email}.json`));
+
+      const session = new Client.Session(device, storage);
+      const account = await session.getAccount();
+      const { profilePicUrl, followerCount, followingCount, username, fullName, mediaCount } = account.params;
+      const newParams = {
+        profilePic: profilePicUrl,
+        followerCount,
+        followingCount,
+        handle: `@${username}`,
+        fullName,
+        mediaCount
+      }
+
+      const newAcc = {
+        ...instaAccount,
+        ...newParams
+      }
+
+      return newAcc;
+    });
+
+    const results = await Promise.all(promises);
+
+    cb(results);
+  });
+}
 
 export default router;

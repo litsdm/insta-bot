@@ -14,8 +14,7 @@ router.post('/', ({ body }, res) => {
 	.then(session =>  session.getAccount())
   .then(account => {
     const { profilePicUrl, followerCount, followingCount, username, fullName, mediaCount } = account.params;
-    const payload = {
-      ...body,
+    const instaInfo = {
       profilePic: profilePicUrl,
       followerCount,
       followingCount,
@@ -24,10 +23,10 @@ router.post('/', ({ body }, res) => {
       mediaCount
     }
 
-    const newAccount = new InstaAccount(payload);
+    const newAccount = new InstaAccount(body);
     newAccount.save((err) => {
       if (err) { return res.send({ err: err.message }) }
-      res.send({ account: newAccount });
+      res.send({ account: { ...newAccount, ...instaInfo } });
     });
 
     return Promise.resolve();
